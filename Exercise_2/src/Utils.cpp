@@ -10,7 +10,7 @@ using namespace std;
 bool letturaDatiFileDataCSV(const string& fileIn, double& S, size_t& n, double*& w, double*& r){
 
     ifstream fileInput;
-    fileInput.open(fileIn); // apre il file di input
+    fileInput.open(fileIn); // apro il file di input
 
     if(fileInput.fail()){ // controllo se il file di input viene
 
@@ -42,6 +42,7 @@ bool letturaDatiFileDataCSV(const string& fileIn, double& S, size_t& n, double*&
         }
         return true;
     }
+    // fileInput.close(); // chiudo il file di input
 }
 
 void calcoloRateOfReturn(const double& S, const size_t& n, const double* const& w, const double* const& r,
@@ -61,25 +62,37 @@ void scritturaSuFileResultTXT(ostream& fileOutput, const double& S, const size_t
     fileOutput << "S = " << fixed << setprecision(2) << S << ", n = " << n << endl;
     fileOutput << "w = [ ";
     for(unsigned int i = 0; i < n; i++){
-        fileOutput << w[i] << " ";
+        if((int) (w[i]*10) == w[i]*10){
+            fileOutput << setprecision(1) << w[i] << " ";
+        }else{
+            fileOutput << setprecision(2) << w[i] << " ";
+        }
     }
     fileOutput << "]" << endl;
 
     // if (ceil(w[i]*10)==w[i]*10){
-    //     out << setprecision(1) << w[i]<< " ";
-    // }
-    // else{
-    //     out << setprecision (2) << w[i] << " " ;
+    //     fileOutput << setprecision(1) << w[i]<< " ";
+    // }else{
+    //     fileOutput << setprecision(2) << w[i] << " " ;
     // }
 
     fileOutput << "v = [ ";
     for(unsigned int i = 0; i < n; i++){
-        fileOutput << r[i] << " ";
+        if((int) (r[i]*10) == r[i]*10){
+            fileOutput << setprecision(1) << r[i] << " ";
+        }else{
+            fileOutput << setprecision(2) << r[i] << " ";
+        }
     }
     fileOutput << "]" << endl;
 
     fileOutput << "Rate of return of the portfolio: " << setprecision(4) << rateOfReturn << endl;
     fileOutput << "V: " << setprecision(2) << V << endl;
 
+    // S = 1000.00, n = 8
+    // w = [ 0.05 0.2 0.12 0.18 0.15 0.15 0.1 0.05 ]
+    // r = [ 0.1 0.01 0.05 0.02 0.02 0.05 0.01 0.03 ]
+    // Rate of return of the portfolio: 0.0296
+    // V: 1029.60
 }
 
