@@ -11,8 +11,8 @@ int main(){
 
     ifstream fileInput("data.csv"); // Sostituisci "nome_file.txt" con il nome effettivo del tuo file
 
-    if (fileInput.fail()){
-        cerr << "Errore nell'apertura del file" << endl;
+    if(fileInput.fail()){
+        cerr << "Errore nell'apertura del file di input" << endl;
         return 1;
     }
 
@@ -43,8 +43,8 @@ int main(){
         getline(fileInput, line);
         r1[i] = stod(line);
     }
-    cout << "S = " << fixed << setprecision(2) << S << ", ";
-    cout << "n = " << n << endl;
+
+    cout << "S = " << fixed << setprecision(2) << S << ", n = " << n << endl;
     cout << "w = [ ";
     for(unsigned int i = 0; i < n; i++){
         cout << w1[i] << " ";
@@ -56,8 +56,36 @@ int main(){
         cout << r1[i] << " ";
     }
     cout << "]" << endl;
+
     double rateOfReturn = 0;
     double V = S;
+
+    // for(unsigned int i=0;i<n; i++){
+    //     rateOfReturn = w1[i]*r1[i] + rateOfReturn;
+    //     // cout << setprecision(4) << rateOfReturn  << " ";
+    //     V = S*w1[i]*r1[i] + V;
+    //     // cout << setprecision(2) << V << " ";
+    // }
+
+    cout << "Rate of return of the portfolio: " << setprecision(4) << rateOfReturn << endl;
+    cout << "V: " << setprecision(2) << V << endl;
+
+    ofstream fileOutput("result.txt");
+
+    fileOutput << "S = " << fixed << setprecision(2) << S << ", n = " << n << endl;
+    fileOutput << "w = [ ";
+    for(unsigned int i = 0; i < n; i++){
+        fileOutput << w1[i] << " ";
+    }
+    fileOutput << "]" << endl;
+
+    fileOutput << "v = [ ";
+    for(unsigned int i = 0; i < n; i++){
+        fileOutput << r1[i] << " ";
+    }
+    fileOutput << "]" << endl;
+
+
     for(unsigned int i=0;i<n; i++){
         rateOfReturn = w1[i]*r1[i] + rateOfReturn;
         // cout << setprecision(4) << rateOfReturn  << " ";
@@ -65,13 +93,15 @@ int main(){
         // cout << setprecision(2) << V << " ";
     }
 
-    cout << "Rate of return of the portfolio: " << setprecision(4) << rateOfReturn << endl;
-    cout << "V: " << setprecision(2) << V << endl;
+    fileOutput << "Rate of return of the portfolio: " << setprecision(4) << rateOfReturn << endl;
+    fileOutput << "V: " << setprecision(2) << V << endl;
 
     delete[] w1;
     delete[] r1;
 
     fileInput.close();
+    fileOutput.close();
 
     return 0;
 }
+
