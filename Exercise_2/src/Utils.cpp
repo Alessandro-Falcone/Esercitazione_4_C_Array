@@ -45,7 +45,8 @@ bool letturaDatiFileDataCSV(const string& fileIn, double& S, size_t& n, double*&
     // fileInput.close(); // chiudo il file di input
 }
 
-void calcoloRateOfReturn(const double& S, const size_t& n, const double* const& w, const double* const& r,
+void calcoloRateOfReturn(const double& S, const size_t& n,
+                         const double* const& w, const double* const& r,
                          double& rateOfReturn, double& V){
     rateOfReturn = 0;
     V = S;

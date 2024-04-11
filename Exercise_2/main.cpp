@@ -60,7 +60,7 @@ int main(){
         return 1;
 
     }else{
-       scritturaSuFileResultTXT(fileOutput, S, n, w, r, rateOfReturn, V);
+        scritturaSuFileResultTXT(fileOutput, S, n, w, r, rateOfReturn, V);
     }
 
     fileOutput.close(); // chiudo il file di output
