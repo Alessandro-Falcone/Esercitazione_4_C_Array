@@ -5,11 +5,18 @@
 
 using namespace std;
 
-// funzioni
-bool letturaDatiFileInput(const string& fileIn, double& S, size_t& n, double*& w, double*& r);
+// dichiarazione di tutte le funzioni che andrò ad utilizzare
 
-void calcoloRateOfReturn(const double& S, const size_t& n, const double* const& w, const double* const& r,
+bool letturaDatiFileDataCSV(const string& fileIn, double& S,
+                          size_t& n, double*& w, double*& r);
+
+void calcoloRateOfReturn(const double& S, const size_t& n,
+                         const double* const& w, const double* const& r,
                          double& rateOfReturn, double& V);
+
+void scritturaSuFileResultTXT(ostream& fileOutput, const double& S, const size_t& n,
+                              const double* const& w, const double* const& r,
+                              double& rateOfReturn, double& V);
 
 
 
