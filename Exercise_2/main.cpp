@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
+#include "Utils.hpp"
 
 using namespace std;
 
@@ -19,8 +20,10 @@ int main(){
     string line;
     double S = 0.0;
     size_t n = 0;
-    string w;
-    string r;
+    double* w = nullptr;
+    double* r = nullptr;
+    double rateOfReturn = 0;
+    double V = 0;
 
     getline(fileInput, line, ';');
     getline(fileInput, line);
@@ -30,35 +33,31 @@ int main(){
     getline(fileInput, line);
     n = stoi(line);
 
-    double *w1 = new double[n];
-    double *r1 = new double[n];
-    getline(fileInput, line, ';');
-    w = line;
     getline(fileInput, line);
-    r = line;
+    w = new double[n];
+    r = new double[n];
 
     for(unsigned int i = 0; i < n; i++){
         getline(fileInput, line, ';');
-        w1[i] = stod(line);
+        w[i] = stod(line);
         getline(fileInput, line);
-        r1[i] = stod(line);
+        r[i] = stod(line);
     }
 
     cout << "S = " << fixed << setprecision(2) << S << ", n = " << n << endl;
     cout << "w = [ ";
     for(unsigned int i = 0; i < n; i++){
-        cout << w1[i] << " ";
+        cout << w[i] << " ";
     }
     cout << "]" << endl;
 
     cout << "v = [ ";
     for(unsigned int i = 0; i < n; i++){
-        cout << r1[i] << " ";
+        cout << r[i] << " ";
     }
     cout << "]" << endl;
 
-    double rateOfReturn = 0;
-    double V = S;
+
 
     // for(unsigned int i=0;i<n; i++){
     //     rateOfReturn = w1[i]*r1[i] + rateOfReturn;
@@ -75,29 +74,25 @@ int main(){
     fileOutput << "S = " << fixed << setprecision(2) << S << ", n = " << n << endl;
     fileOutput << "w = [ ";
     for(unsigned int i = 0; i < n; i++){
-        fileOutput << w1[i] << " ";
+        fileOutput << w[i] << " ";
     }
     fileOutput << "]" << endl;
 
     fileOutput << "v = [ ";
     for(unsigned int i = 0; i < n; i++){
-        fileOutput << r1[i] << " ";
+        fileOutput << r[i] << " ";
     }
     fileOutput << "]" << endl;
 
 
-    for(unsigned int i=0;i<n; i++){
-        rateOfReturn = w1[i]*r1[i] + rateOfReturn;
-        // cout << setprecision(4) << rateOfReturn  << " ";
-        V = S*w1[i]*r1[i] + V;
-        // cout << setprecision(2) << V << " ";
-    }
+    ComputeRateOfReturn(S,  n, w, r, rateOfReturn, V);
+
 
     fileOutput << "Rate of return of the portfolio: " << setprecision(4) << rateOfReturn << endl;
     fileOutput << "V: " << setprecision(2) << V << endl;
 
-    delete[] w1;
-    delete[] r1;
+    delete[] w;
+    delete[] r;
 
     fileInput.close();
     fileOutput.close();
