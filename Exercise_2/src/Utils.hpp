@@ -7,14 +7,22 @@ using namespace std;
 
 // dichiarazione di tutte le funzioni che andrò ad utilizzare
 
-bool letturaDatiFileDataCSV(const string& fileIn, double& S,
+// letturaDatiFileInput legge i dati di input dal file "data.csv"
+// percorsoFileInput nome del percorso del file di input
+// S: la conseguente ricchezza iniziale
+// n: il numero risultante di beni
+// w: il vettore risultante dei pesi degli assetin portafoglio
+// r: il vettore risultante dei tassi di rendimento delle attività
+// risultato della lettura: "true" successo mentre "false" errore
+
+bool letturaDatiFileInput(const string& percorsoFileInput, double& S,
                             size_t& n, double*& w, double*& r);
 
 void calcoloRateOfReturn(const double& S, const size_t& n,
                          const double* const& w, const double* const& r,
                          double& rateOfReturn, double& V);
 
-void scritturaSuFileResultTXT(ostream& fileOutput, const double& S, const size_t& n,
+void scritturaSuFileOutput(ostream& fileOutput, const double& S, const size_t& n,
                               const double* const& w, const double* const& r,
                               double& rateOfReturn, double& V);
 

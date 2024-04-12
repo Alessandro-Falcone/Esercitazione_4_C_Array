@@ -17,50 +17,39 @@ int main(){
     double rateOfReturn = 0;
     double V = 0;
 
-    if(letturaDatiFileDataCSV(fileInput, S, n, w, r) != true){
+    if(letturaDatiFileInput(fileInput, S, n, w, r) != true){
+
+        // dato che la funzione letturaDatiFileInput l'ho definita come una funzione booleana che ritorna "true" o "false"
+        // se questa funzione ritorna "false" apparirà sullo schermo questo messaggio d'errore
+        // in quanto c'è stato qualche problema
+
         cerr << "Errore nell'apertura del file di input" << endl;
+
+        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore ritorna anche 1
         return 1;
     }
 
     calcoloRateOfReturn(S, n, w, r, rateOfReturn, V);
+    // vado a chiamare la funzione calcoloRateOfReturn che calcola il RateOfReturn e V
 
-    cout << "S = " << fixed << setprecision(2) << S << ", n = " << n << endl;
-    cout << "w = [ ";
-    for(unsigned int i = 0; i < n; i++){
-        if((int) (w[i]*10) == w[i]*10){
-            cout << setprecision(1) << w[i] << " ";
-        }else{
-            cout << setprecision(2) << w[i] << " ";
-        }
-    }
-    cout << "]" << endl;
-
-    cout << "v = [ ";
-    for(unsigned int i = 0; i < n; i++){
-        if((int) (r[i]*10) == r[i]*10){
-            cout << setprecision(1) << r[i] << " ";
-        }else{
-            cout << setprecision(2) << r[i] << " ";
-        }
-    }
-    cout << "]" << endl;
-
-    cout << "Rate of return of the portfolio: " << setprecision(4) << rateOfReturn << endl;
-    cout << "V: " << setprecision(2) << V << endl;
+    scritturaSuFileOutput(cout, S, n, w, r, rateOfReturn, V);
 
     string fileOut = "result.txt";
     ofstream fileOutput;
-    fileOutput.open(fileOut);
+    fileOutput.open(fileOut); // apro il file di output
 
     if(fileOutput.fail()){ // Controllo che il file di output sia stato aperto correttamente
 
         cerr << "errore nell'apertura del file di output che hai inserito\n" << endl;
-        // Messaggio di errore che dice che il file di output inserito non e' stato aperto correttamente
+        // messaggio di errore che dice che il file di output inserito non e' stato aperto correttamente
 
+        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore ritorna anche 1
         return 1;
 
     }else{
-        scritturaSuFileResultTXT(fileOutput, S, n, w, r, rateOfReturn, V);
+        scritturaSuFileOutput(fileOutput, S, n, w, r, rateOfReturn, V);
+        // se il file di output è stato aperto correttamente vado a chiamare la funzione scritturaSuFileOutput
+        // che ho definito in modo tale da scrivere sul file di output
     }
 
     fileOutput.close(); // chiudo il file di output

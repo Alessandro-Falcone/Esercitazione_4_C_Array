@@ -7,10 +7,10 @@
 using namespace std;
 
 // funzioni
-bool letturaDatiFileDataCSV(const string& fileIn, double& S, size_t& n, double*& w, double*& r){
+bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n, double*& w, double*& r){
 
     ifstream fileInput;
-    fileInput.open(fileIn); // apro il file di input
+    fileInput.open(percorsoFileInput); // apro il file di input
 
     if(fileInput.fail()){ // controllo se il file di input viene
 
@@ -56,7 +56,7 @@ void calcoloRateOfReturn(const double& S, const size_t& n,
     }
 }
 
-void scritturaSuFileResultTXT(ostream& fileOutput, const double& S, const size_t& n,
+void scritturaSuFileOutput(ostream& fileOutput, const double& S, const size_t& n,
                               const double* const& w, const double* const& r,
                               double& rateOfReturn, double& V){
 
@@ -71,11 +71,7 @@ void scritturaSuFileResultTXT(ostream& fileOutput, const double& S, const size_t
     }
     fileOutput << "]" << endl;
 
-    // if (ceil(w[i]*10)==w[i]*10){
-    //     fileOutput << setprecision(1) << w[i]<< " ";
-    // }else{
-    //     fileOutput << setprecision(2) << w[i] << " " ;
-    // }
+    // ceil(w[i]*10)==w[i]*10
 
     fileOutput << "v = [ ";
     for(unsigned int i = 0; i < n; i++){
