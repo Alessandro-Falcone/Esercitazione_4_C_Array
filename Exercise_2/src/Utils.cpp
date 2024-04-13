@@ -12,8 +12,9 @@ bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
     ifstream fileInput;
     fileInput.open(percorsoFileInput); // apro il file di input
 
-    if(fileInput.fail()){ // controllo se il file di input viene
+    if(fileInput.fail()){ // controllo se il file di input è stato aperto correttamente
 
+        // se il file di input inserito non e' stato aperto correttamente la funzione ritorna "false"
         return false;
 
     }else{
@@ -32,7 +33,14 @@ bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
 
         getline(fileInput, line);
         w = new double[n];
+        // alloco dinamicamente un array w di numeri double di lunghezza n.
+        // double indica il tipo di dati dell'array, che in questo caso è un array di numeri in virgola mobile.
+        // n rappresenta la lunghezza dell'array, ovvero il numero di elementi che verranno allocati.
+
         r = new double[n];
+        // alloco dinamicamente un array w di numeri double di lunghezza n.
+        // double indica il tipo di dati dell'array, che in questo caso è un array di numeri in virgola mobile.
+        // n rappresenta la lunghezza dell'array, ovvero il numero di elementi che verranno allocati.
 
         for(unsigned int i = 0; i < n; i++){
             getline(fileInput, line, ';');
