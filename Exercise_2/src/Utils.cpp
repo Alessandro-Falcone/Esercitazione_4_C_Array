@@ -35,9 +35,9 @@ bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
         getline(fileInput, line);
         w = new double[n];
         r = new double[n];
-        // alloco dinamicamente un array w (vale lo stesso per r) di numeri double di lunghezza n.
-        // double indica il tipo di dati dell'array, che in questo caso è un array di numeri in virgola mobile.
-        // n rappresenta la lunghezza dell'array, ovvero il numero di elementi che verranno allocati.
+        // alloco dinamicamente gli array w e r di numeri double di lunghezza n.
+        // double indica il tipo di dati degli array w e r, che in questo caso sono array di numeri in virgola mobile.
+        // n rappresenta la lunghezza degli array w e r, ovvero il numero di elementi che verranno allocati.
 
         for(unsigned int i = 0; i < n; i++){
             getline(fileInput, line, ';');
