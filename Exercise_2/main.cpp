@@ -17,11 +17,11 @@ int main(){
     double rateOfReturn = 0;
     double V = 0;
 
-    if(letturaDatiFileInput(fileInput, S, n, w, r) != true){
+    if(letturaDatiFileInput(fileInput, S, n, w, r) != true){ // Controllo che il file di input sia stato aperto correttamente
 
         // dato che la funzione letturaDatiFileInput l'ho definita come una funzione booleana che ritorna "true" o "false"
         // se questa funzione ritorna "false" apparirà sullo schermo questo messaggio d'errore
-        // in quanto ci sarà stato qualche problema
+        // in quanto ci sarà stato qualche problema nell'apertura del file di input
 
         cerr << "Errore nell'apertura del file di input" << endl;
 
@@ -31,7 +31,7 @@ int main(){
     }else{
 
         calcoloRateOfReturn(S, n, w, r, rateOfReturn, V);
-        // vado a chiamare la funzione calcoloRateOfReturn che calcola il RateOfReturn e V
+        // vado a chiamare la funzione calcoloRateOfReturn che calcola RateOfReturn e V
 
         cout << "Successo nella lettura dei dati del file di input" << endl;
         cout << "Stampo a schermo l'anteprima di quello che andro' a scrivere sul file di output" << endl;
@@ -49,6 +49,10 @@ int main(){
 
     if(scritturaSuFileOutput(fileOutput, S, n, w, r, rateOfReturn, V) != true){ // Controllo che il file di output sia stato aperto correttamente
 
+        // dato che la funzione scritturaSuFileOutput l'ho definita come una funzione booleana che ritorna "true" o "false"
+        // se questa funzione ritorna "false" apparirà sullo schermo questo messaggio d'errore
+        // in quanto ci sarà stato qualche problema nell'apertura del file di output
+
         // messaggio di errore che dice che il file di output inserito non e' stato aperto correttamente
         cerr << "Errore nell'apertura del file di output che hai inserito\n" << endl;
 
@@ -58,9 +62,6 @@ int main(){
     }else{
 
         cout << "Successo della scrittura sul file di output" << endl;
-
-        // se il file di output è stato aperto correttamente vado a chiamare la funzione scritturaSuFileOutput
-        // che ho definito in modo tale da scrivere sul file di output
     }
 
     delete[] w;
