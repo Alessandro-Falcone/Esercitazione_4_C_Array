@@ -20,12 +20,13 @@ int main(){
     if(letturaDatiFileInput(fileInput, S, n, w, r) != true){ // Controllo che il file di input sia stato aperto correttamente
 
         // dato che la funzione letturaDatiFileInput l'ho definita come una funzione booleana che ritorna "true" o "false"
-        // se questa funzione ritorna "false" apparirà sullo schermo questo messaggio d'errore
+        // se questa funzione ritorna "false" apparirà sullo schermo un messaggio d'errore
         // in quanto ci sarà stato qualche problema nell'apertura del file di input
 
+        // messaggio di errore che dice che il file di input inserito non e' stato aperto correttamente
         cerr << "Errore nell'apertura del file di input" << endl;
 
-        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore ritorna anche 1
+        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore il programma ritorna 1
         return 1;
 
     }else{
@@ -34,7 +35,7 @@ int main(){
         // vado a chiamare la funzione calcoloRateOfReturn che calcola RateOfReturn e V
 
         cout << "Successo nella lettura dei dati del file di input" << endl;
-        cout << "Stampo a schermo l'anteprima di quello che andro' a scrivere sul file di output" << endl;
+        cout << "Contenuto che andro' a scrivere sul file di output" << endl;
     }
 
     cout << "S = " << fixed << setprecision(2) << S << ", n = " << n << endl;
@@ -50,13 +51,13 @@ int main(){
     if(scritturaSuFileOutput(fileOutput, S, n, w, r, rateOfReturn, V) != true){ // Controllo che il file di output sia stato aperto correttamente
 
         // dato che la funzione scritturaSuFileOutput l'ho definita come una funzione booleana che ritorna "true" o "false"
-        // se questa funzione ritorna "false" apparirà sullo schermo questo messaggio d'errore
+        // se questa funzione ritorna "false" apparirà sullo schermo un messaggio d'errore
         // in quanto ci sarà stato qualche problema nell'apertura del file di output
 
         // messaggio di errore che dice che il file di output inserito non e' stato aperto correttamente
         cerr << "Errore nell'apertura del file di output che hai inserito\n" << endl;
 
-        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore ritorna anche 1
+        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore il programma ritorna 1
         return 1;
 
     }else{

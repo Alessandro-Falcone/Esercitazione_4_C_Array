@@ -17,7 +17,7 @@ using namespace std;
 // ritorna il risultato della lettura: "true" successo mentre "false" errore
 
 bool letturaDatiFileInput(const string& percorsoFileInput, double& S,
-                            size_t& n, double*& w, double*& r);
+                          size_t& n, double*& w, double*& r);
 
 // calcoloRateOfReturn calcola il tasso di rendimento del portafoglio e l'importo finale della ricchezza
 // S: la ricchezza iniziale
