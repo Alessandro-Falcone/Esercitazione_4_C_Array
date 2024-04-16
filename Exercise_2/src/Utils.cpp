@@ -34,12 +34,8 @@ bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
 
         getline(fileInput, line);
         w = new double[n];
-        // alloco dinamicamente un array w di numeri double di lunghezza n.
-        // double indica il tipo di dati dell'array, che in questo caso è un array di numeri in virgola mobile.
-        // n rappresenta la lunghezza dell'array, ovvero il numero di elementi che verranno allocati.
-
         r = new double[n];
-        // alloco dinamicamente un array w di numeri double di lunghezza n.
+        // alloco dinamicamente un array w (vale lo stesso per r) di numeri double di lunghezza n.
         // double indica il tipo di dati dell'array, che in questo caso è un array di numeri in virgola mobile.
         // n rappresenta la lunghezza dell'array, ovvero il numero di elementi che verranno allocati.
 
@@ -58,8 +54,10 @@ bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
 void calcoloRateOfReturn(const double& S, const size_t& n,
                          const double* const& w, const double* const& r,
                          double& rateOfReturn, double& V){
-    rateOfReturn = 0;
-    V = S;
+
+    rateOfReturn = 0; //
+    V = S; //
+
     for(unsigned int i = 0; i < n; i++){
         rateOfReturn = w[i]*r[i] + rateOfReturn;
         V = S*w[i]*r[i] + V;
@@ -73,9 +71,9 @@ bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, co
     ofstream fileOutput;
     fileOutput.open(percorsoFileOutput); // apro il file di output
 
-    if(fileOutput.fail()){ // controllo se il file di input è stato aperto correttamente
+    if(fileOutput.fail()){ // controllo se il file di output è stato aperto correttamente
 
-        // se il file di input inserito non e' stato aperto correttamente la funzione ritorna "false"
+        // se il file di output inserito non e' stato aperto correttamente la funzione ritorna "false"
         return false;
 
     }else{

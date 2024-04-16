@@ -10,10 +10,10 @@ using namespace std;
 
 // letturaDatiFileInput legge i dati di input dal file "data.csv"
 // percorsoFileInput: nome del percorso del file di input
-// S: la conseguente ricchezza iniziale
-// n: il numero risultante di beni
-// w: il vettore risultante dei pesi degli asset nel portafoglio
-// r: il vettore risultante dei tassi di rendimento delle attività
+// S: la (conseguente) ricchezza iniziale
+// n: il risultato del numero di assets
+// w: il risultato del vettore dei pesi degli assets nel portafoglio
+// r: il risultato del vettore dei tassi di rendimento delle attività
 // ritorna il risultato della lettura: "true" successo mentre "false" errore
 
 bool letturaDatiFileInput(const string& percorsoFileInput, double& S,
@@ -21,11 +21,11 @@ bool letturaDatiFileInput(const string& percorsoFileInput, double& S,
 
 // calcoloRateOfReturn calcola il tasso di rendimento del portafoglio e l'importo finale della ricchezza
 // S: la ricchezza iniziale
-// n: il numero di asset
-// w: il vettore dei pesi degli asset nel portafoglio
-// r: il vettore dei tassi di rendimento degli asset
-// rateOfReturn: il tasso di rendimento risultante del portafoglio
-// V: la ricchezza finale risultante
+// n: il numero di assets
+// w: il vettore dei pesi degli assets nel portafoglio
+// r: il vettore dei tassi di rendimento degli assets
+// rateOfReturn: il risultato del tasso di rendimento del portafoglio
+// V: il risultato della ricchezza finale
 
 void calcoloRateOfReturn(const double& S, const size_t& n,
                          const double* const& w, const double* const& r,
@@ -34,15 +34,19 @@ void calcoloRateOfReturn(const double& S, const size_t& n,
 // scritturaSuFileOutput stampa i dati (su un flusso di output)
 // percorsoFileOutput: oggetto di tipo ostream
 // S: la ricchezza iniziale
-// n: il numero di asset
-// w: il vettore dei pesi degli asset nel portafoglio
-// r: il vettore dei tassi di rendimento degli asset
+// n: il numero di assets
+// w: il vettore dei pesi degli assets nel portafoglio
+// r: il vettore dei tassi di rendimento degli assets
 // rateOfReturn: il tasso di rendimento del portafoglio
 // V: la ricchezza finale
 bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, const size_t& n,
                               const double* const& w, const double* const& r,
                               double& rateOfReturn, double& V);
 
+// esporta il vettore in una stringa
+// n: dimensione del vettore
+// v: vettore
+// ritorna la stringa risultante
 string arrayToString(const size_t& n, const double* const& v);
 
 // #endif

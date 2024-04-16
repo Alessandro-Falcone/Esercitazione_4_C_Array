@@ -27,12 +27,14 @@ int main(){
 
         // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore ritorna anche 1
         return 1;
+
     }else{
 
         calcoloRateOfReturn(S, n, w, r, rateOfReturn, V);
         // vado a chiamare la funzione calcoloRateOfReturn che calcola il RateOfReturn e V
 
-        cout << "successo nella lettura dei dati del file di input" << endl;
+        cout << "Successo nella lettura dei dati del file di input" << endl;
+        cout << "Stampo a schermo l'anteprima di quello che andro' a scrivere sul file di output" << endl;
     }
 
     cout << "S = " << fixed << setprecision(2) << S << ", n = " << n << endl;
@@ -43,19 +45,19 @@ int main(){
     cout << "Rate of return of the portfolio: " << setprecision(4) << rateOfReturn << endl;
     cout << "V: " << setprecision(2) << V << endl;
 
-    // scritturaSuFileOutput(cout, S, n, w, r, rateOfReturn, V);
     string fileOutput = "./result.txt";
 
     if(scritturaSuFileOutput(fileOutput, S, n, w, r, rateOfReturn, V) != true){ // Controllo che il file di output sia stato aperto correttamente
 
         // messaggio di errore che dice che il file di output inserito non e' stato aperto correttamente
-        cerr << "errore nell'apertura del file di output che hai inserito\n" << endl;
+        cerr << "Errore nell'apertura del file di output che hai inserito\n" << endl;
 
         // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore ritorna anche 1
         return 1;
+
     }else{
 
-        cout << "successo nella scrittura del file di output" << endl;
+        cout << "Successo della scrittura sul file di output" << endl;
 
         // se il file di output è stato aperto correttamente vado a chiamare la funzione scritturaSuFileOutput
         // che ho definito in modo tale da scrivere sul file di output
