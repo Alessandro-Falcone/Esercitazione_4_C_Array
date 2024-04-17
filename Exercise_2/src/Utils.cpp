@@ -55,8 +55,8 @@ void calcoloRateOfReturn(const double& S, const size_t& n,
                          const double* const& w, const double* const& r,
                          double& rateOfReturn, double& V){
 
-    rateOfReturn = 0; //
-    V = S; //
+    rateOfReturn = 0; // tasso di rendimento inizializzato a 0
+    V = S; // ricchezza finale V inizializzata alla ricchezza iniziale S
 
     for(unsigned int i = 0; i < n; i++){
         rateOfReturn = w[i]*r[i] + rateOfReturn;
@@ -84,23 +84,32 @@ bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, co
         for(unsigned int i = 0; i < n; i++){
             if((int) (w[i]*10) == w[i]*10){
                 fileOutput << setprecision(1) << (i != 0 ? " " : "") << w[i];
+                // se è soddisfatta la condizione dell'if scrivo sul file di output
+                // i valori double del file di input del vettore w con setprecision(1) separati da spazi
                 // fileOutput << setprecision(1) << w[i] << " ";
             }else{
                 fileOutput << setprecision(2) << (i != 0 ? " " : "") << w[i];
+                // se non è soddisfatta la condizione dell'if scrivo sul file di output
+                // i valori double del file di input del vettore w con setprecision(2) separati da spazi
                 // fileOutput << setprecision(2) << w[i] << " ";
             }
         }
         fileOutput << " ]" << endl;
 
-        // ceil(w[i]*10)==w[i]*10
+        // ceil(w[i]*10) == w[i]*10
+        // #include <cmath>
 
         fileOutput << "v = [ ";
         for(unsigned int i = 0; i < n; i++){
             if((int) (r[i]*10) == r[i]*10){
                 fileOutput << setprecision(1) << (i != 0 ? " " : "") << r[i];
+                // se è soddisfatta la condizione dell'if scrivo sul file di output
+                // i valori double del file di input del vettore r con setprecision(1) separati da spazi
                 // fileOutput << setprecision(1) << r[i] << " ";
             }else{
                 fileOutput << setprecision(2) << (i != 0 ? " " : "") << r[i];
+                // se non è soddisfatta la condizione dell'if scrivo sul file di output
+                // i valori double del file di input del vettore r con setprecision(2) separati da spazi
                 // fileOutput << setprecision(2) << r[i] << " ";
             }
         }
@@ -110,6 +119,8 @@ bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, co
         fileOutput << "V: " << setprecision(2) << V << endl;
 
         fileOutput.close(); // chiudo il file di output
+
+        // ceil(r[i]*10) == r[i]*10
 
         return true;
     }

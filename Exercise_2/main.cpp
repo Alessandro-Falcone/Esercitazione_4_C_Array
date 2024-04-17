@@ -8,14 +8,14 @@ using namespace std;
 
 int main(){
 
-    string fileInput = "./data.csv";
-
     double S = 0.0;
     size_t n = 0;
     double* w = nullptr;
     double* r = nullptr;
     double rateOfReturn = 0;
     double V = 0;
+
+    string fileInput = "./data.csv";
 
     if(!letturaDatiFileInput(fileInput, S, n, w, r)){ // Controllo che il file di input sia stato aperto correttamente
 
@@ -31,12 +31,11 @@ int main(){
 
     }else{
 
-        // Calcolo del tasso di rendimento e V
         calcoloRateOfReturn(S, n, w, r, rateOfReturn, V);
         // vado a chiamare la funzione calcoloRateOfReturn che calcola il tasso di rendimento e V
 
         cout << "Successo: dati del file di input letti correttamente." << endl;
-        cout << "Contenuto che andro' a scrivere sul file di output" << endl;
+        cout << "Contenuto che andro' a scrivere sul file di output:" << endl;
     }
 
     // Stampa dei dati
@@ -65,6 +64,7 @@ int main(){
         cout << "Successo: risultati scritti correttamente sul file di output." << endl;
     }
 
+    // dealloco la memoria
     delete[] w;
     delete[] r;
 
@@ -75,8 +75,6 @@ int main(){
     // Senza questo comando, potrebbe verificarsi una perdita di memoria (memory leak),
     // poiché la memoria precedentemente allocata non verrebbe mai rilasciata fino alla fine del programma.
     // Rendendo la memoria precedentemente occupata dall'array disponibile per altre allocazioni di memoria.
-    // È importante utilizzare delete[] quando si dealloca la memoria di un array allocato dinamicamente
-    // per garantire la corretta gestione della memoria.
 
     return 0;
 }

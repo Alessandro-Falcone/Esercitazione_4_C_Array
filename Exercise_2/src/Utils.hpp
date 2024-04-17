@@ -8,9 +8,9 @@ using namespace std;
 
 // dichiarazione di tutte le funzioni che andrò ad utilizzare
 
-// letturaDatiFileInput legge i dati di input dal file "data.csv"
+// letturaDatiFileInput legge i dati di input dal file di input "data.csv"
 // percorsoFileInput: nome del percorso del file di input
-// S: la (conseguente) ricchezza iniziale
+// S: la ricchezza iniziale
 // n: il risultato del numero di assets
 // w: il risultato del vettore dei pesi degli assets nel portafoglio
 // r: il risultato del vettore dei tassi di rendimento delle attività
@@ -31,8 +31,8 @@ void calcoloRateOfReturn(const double& S, const size_t& n,
                          const double* const& w, const double* const& r,
                          double& rateOfReturn, double& V);
 
-// scritturaSuFileOutput stampa i dati (su un flusso di output)
-// percorsoFileOutput: oggetto di tipo ostream
+// scritturaSuFileOutput scrive i risultati ottenuti sul file di output "result.txt"
+// percorsoFileOutput: nome del percorso del file di output
 // S: la ricchezza iniziale
 // n: il numero di assets
 // w: il vettore dei pesi degli assets nel portafoglio
@@ -46,7 +46,7 @@ bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, co
 // esporta il vettore in una stringa
 // n: dimensione del vettore
 // v: vettore
-// ritorna la stringa risultante
+// ritorna la stringa finale
 string arrayToString(const size_t& n, const double* const& v);
 
 // #endif
