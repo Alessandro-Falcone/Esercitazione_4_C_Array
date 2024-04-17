@@ -16,8 +16,8 @@ using namespace std;
 // r: il risultato del vettore dei tassi di rendimento delle attività
 // ritorna il risultato della lettura: "true" successo mentre "false" errore
 
-bool letturaDatiFileInput(const string& percorsoFileInput, double& S,
-                          size_t& n, double*& w, double*& r);
+bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
+                          double*& w, double*& r);
 
 // calcoloRateOfReturn calcola il tasso di rendimento del portafoglio e l'importo finale della ricchezza
 // S: la ricchezza iniziale
@@ -27,7 +27,7 @@ bool letturaDatiFileInput(const string& percorsoFileInput, double& S,
 // rateOfReturn: il risultato del tasso di rendimento del portafoglio
 // V: il risultato della ricchezza finale
 
-void calcoloRateOfReturn(const double& S, const size_t& n,
+void calcoloRateOfReturnAndV(const double& S, const size_t& n,
                          const double* const& w, const double* const& r,
                          double& rateOfReturn, double& V);
 

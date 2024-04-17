@@ -8,7 +8,8 @@
 using namespace std;
 
 // funzioni
-bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n, double*& w, double*& r){
+bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
+                          double*& w, double*& r){
 
     ifstream fileInput;
     fileInput.open(percorsoFileInput); // apro il file di input
@@ -51,9 +52,9 @@ bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
     }
 }
 
-void calcoloRateOfReturn(const double& S, const size_t& n,
-                         const double* const& w, const double* const& r,
-                         double& rateOfReturn, double& V){
+void calcoloRateOfReturnAndV(const double& S, const size_t& n,
+                             const double* const& w, const double* const& r,
+                             double& rateOfReturn, double& V){
 
     rateOfReturn = 0; // tasso di rendimento inizializzato a 0
     V = S; // ricchezza finale V inizializzata alla ricchezza iniziale S
@@ -65,8 +66,8 @@ void calcoloRateOfReturn(const double& S, const size_t& n,
 }
 
 bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, const size_t& n,
-                              const double* const& w, const double* const& r,
-                              double& rateOfReturn, double& V){
+                           const double* const& w, const double* const& r,
+                           double& rateOfReturn, double& V){
 
     ofstream fileOutput;
     fileOutput.open(percorsoFileOutput); // apro il file di output
@@ -83,34 +84,29 @@ bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, co
         fileOutput << "w = [ ";
         for(unsigned int i = 0; i < n; i++){
             if((int) (w[i]*10) == w[i]*10){
-                fileOutput << setprecision(1) << (i != 0 ? " " : "") << w[i];
+                fileOutput << setprecision(1) << (i != 0 ? " " : "") << w[i]; // modo alternativo fileOutput << setprecision(1) << w[i] << " ";
                 // se è soddisfatta la condizione dell'if scrivo sul file di output
                 // i valori double del file di input del vettore w con setprecision(1) separati da spazi
-                // fileOutput << setprecision(1) << w[i] << " ";
             }else{
-                fileOutput << setprecision(2) << (i != 0 ? " " : "") << w[i];
+                fileOutput << setprecision(2) << (i != 0 ? " " : "") << w[i]; // modo alternativo fileOutput << setprecision(2) << w[i] << " ";
                 // se non è soddisfatta la condizione dell'if scrivo sul file di output
-                // i valori double del file di input del vettore w con setprecision(2) separati da spazi
-                // fileOutput << setprecision(2) << w[i] << " ";
+                // i valori double del file di input del vettore w con setprecision(2) separati da spaz
             }
         }
         fileOutput << " ]" << endl;
 
-        // ceil(w[i]*10) == w[i]*10
-        // #include <cmath>
+        // ceil(w[i]*10) == w[i]*10 #include <cmath>
 
         fileOutput << "v = [ ";
         for(unsigned int i = 0; i < n; i++){
             if((int) (r[i]*10) == r[i]*10){
-                fileOutput << setprecision(1) << (i != 0 ? " " : "") << r[i];
+                fileOutput << setprecision(1) << (i != 0 ? " " : "") << r[i]; // modo alternativo fileOutput << setprecision(1) << r[i] << " ";
                 // se è soddisfatta la condizione dell'if scrivo sul file di output
                 // i valori double del file di input del vettore r con setprecision(1) separati da spazi
-                // fileOutput << setprecision(1) << r[i] << " ";
             }else{
-                fileOutput << setprecision(2) << (i != 0 ? " " : "") << r[i];
+                fileOutput << setprecision(2) << (i != 0 ? " " : "") << r[i]; // modo alternativo fileOutput << setprecision(2) << r[i] << " ";
                 // se non è soddisfatta la condizione dell'if scrivo sul file di output
                 // i valori double del file di input del vettore r con setprecision(2) separati da spazi
-                // fileOutput << setprecision(2) << r[i] << " ";
             }
         }
         fileOutput << " ]" << endl;
@@ -120,7 +116,7 @@ bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, co
 
         fileOutput.close(); // chiudo il file di output
 
-        // ceil(r[i]*10) == r[i]*10
+        // ceil(r[i]*10) == r[i]*10 #include <cmath>
 
         return true;
     }
@@ -128,11 +124,12 @@ bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, co
 
 string arrayToString(const size_t& n, const double* const& v){
 
-    string str;
+    // string str;
     ostringstream toString;
     toString << "[ ";
-    for (unsigned int i = 0; i < n; i++)
+    for (unsigned int i = 0; i < n; i++){
         toString << v[i] << " ";
+    }
     toString << "]";
 
     return toString.str();

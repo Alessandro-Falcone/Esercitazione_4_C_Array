@@ -26,12 +26,12 @@ int main(){
         // messaggio di errore che dice che il file di input inserito non e' stato aperto correttamente
         cerr << "Errore: impossibile aprire il file di input." << endl;
 
-        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore il programma ritorna 1
+        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore viene restituito 1
         return 1;
 
     }else{
 
-        calcoloRateOfReturn(S, n, w, r, rateOfReturn, V);
+        calcoloRateOfReturnAndV(S, n, w, r, rateOfReturn, V);
         // vado a chiamare la funzione calcoloRateOfReturn che calcola il tasso di rendimento e V
 
         cout << "Successo: dati del file di input letti correttamente." << endl;
@@ -41,7 +41,7 @@ int main(){
     // Stampa dei dati
     cout << "S = " << fixed << setprecision(2) << S << ", n = " << n << endl;
     cout << "w = " << arrayToString(n, w) << endl;
-    cout << "v = " << arrayToString(n, r) << endl;
+    cout << "r = " << arrayToString(n, r) << endl;
     cout << "Rate of return of the portfolio: " << setprecision(4) << rateOfReturn << endl;
     cout << "V: " << setprecision(2) << V << endl;
 
@@ -56,7 +56,7 @@ int main(){
         // messaggio di errore che dice che il file di output inserito non e' stato aperto correttamente
         cerr << "Errore: Impossibile aprire il file di output." << endl;
 
-        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore il programma ritorna 1
+        // inoltre l'esecuzione del programma si arresta e oltre al messaggio d'errore viene restituito 1
         return 1;
 
     }else{
@@ -73,8 +73,7 @@ int main(){
     // che era stata riservata per l'array puntato da w (vale lo stesso per r),
     // consentendo al sistema operativo di recuperare questa memoria per altri scopi.
     // Senza questo comando, potrebbe verificarsi una perdita di memoria (memory leak),
-    // poiché la memoria precedentemente allocata non verrebbe mai rilasciata fino alla fine del programma.
-    // Rendendo la memoria precedentemente occupata dall'array disponibile per altre allocazioni di memoria.
+    // in quanto la memoria precedentemente allocata non verrebbe mai rilasciata fino alla fine del programma.
 
     return 0;
 }
