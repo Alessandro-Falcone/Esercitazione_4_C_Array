@@ -8,6 +8,7 @@
 using namespace std;
 
 // funzioni
+
 bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
                           double*& w, double*& r){
 
@@ -33,12 +34,11 @@ bool letturaDatiFileInput(const string& percorsoFileInput, double& S, size_t& n,
         getline(fileInput, line);
         n = stoi(line);
 
-        getline(fileInput, line);
+        getline(fileInput, line); // salvo la riga del file di input w;r
         w = new double[n];
         r = new double[n];
-        // alloco dinamicamente gli array w e r di numeri double di lunghezza n.
-        // double indica il tipo di dati degli array w e r, che in questo caso sono array di numeri in virgola mobile.
-        // n rappresenta la lunghezza degli array w e r, ovvero il numero di elementi che verranno allocati.
+        // alloco dinamicamente gli array w e r di numeri double (tipo di dati numeri in virgola mobile)
+        // di lunghezza n (numero di elementi che verranno allocati).
 
         for(unsigned int i = 0; i < n; i++){
             getline(fileInput, line, ';');
@@ -83,27 +83,29 @@ bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, co
 
         fileOutput << "w = [ ";
         for(unsigned int i = 0; i < n; i++){
-            if((int) (w[i]*10) == w[i]*10){
+            if((int) (w[i]*10) == w[i]*10){ // modo alternativo ceil(w[i]*10) == w[i]*10 da includere #include <cmath>
+
                 fileOutput << setprecision(1) << (i != 0 ? " " : "") << w[i]; // modo alternativo fileOutput << setprecision(1) << w[i] << " ";
                 // se è soddisfatta la condizione dell'if scrivo sul file di output
                 // i valori double del file di input del vettore w con setprecision(1) separati da spazi
             }else{
+
                 fileOutput << setprecision(2) << (i != 0 ? " " : "") << w[i]; // modo alternativo fileOutput << setprecision(2) << w[i] << " ";
                 // se non è soddisfatta la condizione dell'if scrivo sul file di output
-                // i valori double del file di input del vettore w con setprecision(2) separati da spaz
+                // i valori double del file di input del vettore w con setprecision(2) separati da spazi
             }
         }
         fileOutput << " ]" << endl;
 
-        // ceil(w[i]*10) == w[i]*10 #include <cmath>
-
-        fileOutput << "v = [ ";
+        fileOutput << "r = [ ";
         for(unsigned int i = 0; i < n; i++){
-            if((int) (r[i]*10) == r[i]*10){
+            if((int) (r[i]*10) == r[i]*10){ // modo alternativo ceil(r[i]*10) == r[i]*10 da includere #include <cmath>
+
                 fileOutput << setprecision(1) << (i != 0 ? " " : "") << r[i]; // modo alternativo fileOutput << setprecision(1) << r[i] << " ";
                 // se è soddisfatta la condizione dell'if scrivo sul file di output
                 // i valori double del file di input del vettore r con setprecision(1) separati da spazi
             }else{
+
                 fileOutput << setprecision(2) << (i != 0 ? " " : "") << r[i]; // modo alternativo fileOutput << setprecision(2) << r[i] << " ";
                 // se non è soddisfatta la condizione dell'if scrivo sul file di output
                 // i valori double del file di input del vettore r con setprecision(2) separati da spazi
@@ -115,8 +117,6 @@ bool scritturaSuFileOutput(const string& percorsoFileOutput, const double& S, co
         fileOutput << "V: " << setprecision(2) << V << endl;
 
         fileOutput.close(); // chiudo il file di output
-
-        // ceil(r[i]*10) == r[i]*10 #include <cmath>
 
         return true;
     }
